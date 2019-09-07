@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 
 const API_URL_product = "http://192.168.99.102:8085/api/collections/get/products";
 
@@ -30,7 +31,7 @@ const Home = () => {
 
                 <div className="parent" key={product._id}>
                     <div className="child">
-                        <p>{product.name}</p>
+                        <h6><Link to={`/details/${product._id}`}>{product.name}</Link></h6>
                         <p>{<img src={"http://192.168.99.102:8085/" + product.images[0].path} alt="image" width="100px" />}</p>
                         <p>{product.price}</p>
                     </div>
