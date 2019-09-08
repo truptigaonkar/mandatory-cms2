@@ -11,22 +11,26 @@ const Home = () => {
     const [postsPerPage, setPostsPerPage] = useState(3);
     //Search (Reference: https://discourse.getcockpit.com/t/search-itens-by-term/70/3)
     const [search, setSearch] = useState("");
+    //Checkbox
+    const [checkbox, setCheckbox] = useState(false);
 
     // componentDidMount() without hook
     useEffect(() => {
-        Axios.get(`http://192.168.99.102:8085/api/collections/get/products?filter[name][$regex]=${search}`).then(response => {
-            console.log(response.data.entries);
-            setProducts(response.data.entries);
-        })
-    }, [search])
+        Axios.get(`http://192.168.99.102:8085/api/collections/get/products?filter[name][$regex]=${search}
+                ${checkbox ? "&filter[stock_amount]=true" : ''}`)
+            .then(response => {
+                console.log(response.data.entries);
+                setProducts(response.data.entries);
+            })
+    }, [search, checkbox])
 
-     //Pagination: Get current article 
-     const indexOfLastPost = currentPage * postsPerPage;
-     const indexOfFirstPost = indexOfLastPost - postsPerPage;
-     const currentPosts = products.slice(indexOfFirstPost, indexOfLastPost);
- 
-     //Pagination: Change page
-     const paginate = (pageNumber) => setCurrentPage(pageNumber)
+    //Pagination: Get current article 
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = products.slice(indexOfFirstPost, indexOfLastPost);
+
+    //Pagination: Change page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
     if (!products) {
         return <p>Loading product......</p>
@@ -38,14 +42,16 @@ const Home = () => {
                 <title>Home</title>
             </Helmet>
             <h3>Product list</h3>
-            <p><input type="text" placeholder="Search product by name..." onChange={e => setSearch(e.target.value) } value={search}/></p>
+            <p><input type="text" placeholder="Search product by name..." onChange={e => setSearch(e.target.value)} value={search} /></p>
+            <p><input type="checkbox" onChange={e => setCheckbox(e.target.checkbox)} checked={checkbox} /> Show only products in stock</p>
             {/* {products.map((product) => ( */}
             {currentPosts.map((product) => (
                 <div className="parent" key={product._id}>
                     <div className="child">
                         <h6><Link to={`/details/${product._id}`}>{product.name}</Link></h6>
                         <p>{<img src={"http://192.168.99.102:8085/" + product.images[0].path} alt="image" width="250px" />}</p>
-                        <p>{product.price}</p>
+                        <p>{product.price}$</p>
+                        <p>{product.stock_amount} in stock</p>
                     </div>
                 </div>
             ))}
