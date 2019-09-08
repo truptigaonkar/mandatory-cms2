@@ -1,8 +1,9 @@
-.parent{
-display: inline-flex;
-  
+.parent {
+  display: inline-flex;
+  text-align: center
 }
-.child{
+
+.child {
   border: solid 1px black;
   margin: 5px;
 }
