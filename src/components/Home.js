@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Axios from 'axios';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import Pagination from '../components/Pagination';
+import { CartContext } from '../components/CartContext';
 
-const Home = () => {
+const Home = (props) => {
     const [products, setProducts] = useState([]);
     //Pagination (Reference: https://www.youtube.com/watch?v=IYCa1F-OWmk)
     const [currentPage, setCurrentPage] = useState(1);
@@ -13,6 +14,8 @@ const Home = () => {
     const [search, setSearch] = useState("");
     //Checkbox
     const [checkbox, setCheckbox] = useState(false);
+    //Cart
+    const [cart, setCart] = useContext(CartContext);
 
     // componentDidMount() without hook
     useEffect(() => {
@@ -41,7 +44,7 @@ const Home = () => {
             <Helmet>
                 <title>Home</title>
             </Helmet>
-            <h3>Product list</h3>
+            <h3>Product list <span style={{float:"right", fontSize:"15px"}}><Link to="/cart">Shopping Cart({cart.length})</Link></span></h3>
             <p><input type="text" placeholder="Search product by name..." onChange={e => setSearch(e.target.value)} value={search} /></p>
             <p><input type="checkbox" onChange={e => setCheckbox(e.target.checkbox)} checked={checkbox} /> Show only products in stock</p>
             {/* {products.map((product) => ( */}

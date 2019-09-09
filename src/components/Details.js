@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Helmet } from 'react-helmet';
-import axios from 'axios'
+import axios from 'axios';
+import { CartContext } from '../components/CartContext';
+import { Link } from 'react-router-dom';
 
 const Details = (props) => {
     const [product, setProduct] = useState([]);
     const { id } = props.match.params;
+    //Cart Reference: https://www.youtube.com/watch?v=hhAT0CJDWqM
+    const [cart, setCart] = useContext(CartContext);
 
     // componentDidMount() without hook
     useEffect(() => {
@@ -13,6 +17,22 @@ const Details = (props) => {
             setProduct(response.data.entries[0]);
         })
     }, [id])
+
+     //Cart: function addToCart Reference: https://www.youtube.com/watch?v=hhAT0CJDWqM
+     const addToCart = () => {
+        console.log("Button Add to cart clicked");
+        const cartItem = { 
+        
+            
+            "id": product._id,
+            "name": product.name,
+            "price": product.price,
+            "amount": product.stock_amount
+        };
+        //setCart( [...cart$.value, cartItem]);
+        setCart(currentState => [...currentState, cartItem]);
+        window.history.back();
+    }
 
     return (
         <div>
@@ -24,6 +44,8 @@ const Details = (props) => {
             <p>{product.description}</p>
             <p>Price: {product.price}</p>
             <p>Stock: {product.stock_amount}</p>
+            <button onClick={addToCart}>Add To Cart</button><hr/>
+            <p><button><Link to="/">Back to list</Link></button></p>
         </div>
     );
 };
