@@ -22,8 +22,6 @@ const Details = (props) => {
      const addToCart = () => {
         console.log("Button Add to cart clicked");
         const cartItem = { 
-        
-            
             "id": product._id,
             "name": product.name,
             "price": product.price,
@@ -33,7 +31,6 @@ const Details = (props) => {
         setCart(currentState => [...currentState, cartItem]);
         window.history.back();
     }
-
     return (
         <div>
             <Helmet>

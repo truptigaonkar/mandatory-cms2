@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Cart = (props) => {
     const [cart, setCart] = useContext(CartContext);
+    const totalPrice = cart.reduce((acc, curr) => acc + Number(curr.price), 0);
     console.log("component Cart.js:", cart);
 
     return (
@@ -28,7 +29,8 @@ const Cart = (props) => {
                             )) 
                     }
                 </tbody>
-            </table><hr/>
+            </table>
+            <span>Total price : {totalPrice}</span><hr/>
             <p><button><Link to="/">Continue shopping</Link></button>  <button>Checkout</button></p>
         </>
     );
