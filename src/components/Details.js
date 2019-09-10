@@ -43,7 +43,7 @@ const Details = (props) => {
             <p>{product.description}</p>
             <p>Price: {cart.length * product.price}</p>
             <p>Stock: {product.stock_amount}</p>
-            <input defaultValue="0" style={{width: "50px"}} onChange={e => setItemsToBeAdded(e.target.value)} type="number" />
+            <input defaultValue="0" min={0} max={product.stock_amount} onChange={e => setItemsToBeAdded(e.target.value)} type="number" />
             <button onClick={addToCart}>Add To Cart</button><hr/>
             <p><button><Link to="/">Back to list</Link></button></p>
         </div>
