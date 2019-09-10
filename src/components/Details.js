@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import { CartContext } from '../components/CartContext';
 import { Link } from 'react-router-dom';
+import Reviews from './Reviews';
 
 const Details = (props) => {
     const [product, setProduct] = useState([]);
@@ -45,7 +46,8 @@ const Details = (props) => {
             <p>Stock: {product.stock_amount}</p>
             <input defaultValue="0" min={0} max={product.stock_amount} onChange={e => setItemsToBeAdded(e.target.value)} type="number" />
             <button onClick={addToCart}>Add To Cart</button><hr/>
-            <p><button><Link to="/">Back to list</Link></button></p>
+            <p><button><Link to="/">Back to list</Link></button></p><hr/>
+            <Reviews id={id} />
         </div>
     );
 };

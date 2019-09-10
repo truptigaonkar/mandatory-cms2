@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Details from './components/Details';
 import Cart from './components/Cart';
 import { CartProvider } from './components/CartContext';
+import Reviews from './components/Reviews';
 
 function App() {
   return (
@@ -13,10 +14,12 @@ function App() {
     <Router>
     <ul>
       <li><Link to="/">Home</Link></li>
+      <li><Link to="/reviews">Reviews</Link></li>
     </ul>
       <Route exact path="/" component={Home}/>
       <Route path="/details/:id" component={Details}/>
       <Route path="/cart" component={Cart}/>
+      <Route path="/reviews" component={Reviews}/>
     </Router>
     </CartProvider>
     </>
