@@ -34,13 +34,21 @@ const Details = (props) => {
         setCart(currentState => [...currentState, cartItem]);
         window.history.back();
     }
+    // Show the gallary images
+    let images = []
+    if(product.images) {
+      images = product.images.map(image => {
+        return <img src={"http://192.168.99.102:8085/" + image.path } width="200px" height="200px" />;
+      });
+    }
     return (
         <div>
             <Helmet>
                 <title>{product.name}</title>
             </Helmet>
-            
             <h3>{product.name} Details: </h3>
+            {/* Show the gallary images */}
+            <p>{images}</p>
             <p>{product.description}</p>
             <p>Price: {cart.length * product.price}</p>
             <p>Stock: {product.stock_amount}</p>
