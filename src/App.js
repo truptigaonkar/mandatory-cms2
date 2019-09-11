@@ -14,7 +14,6 @@ function App() {
     <Router>
     <ul>
       <li><Link to="/">Home</Link></li>
-      <li><Link to="/reviews">Reviews</Link></li>
     </ul>
       <Route exact path="/" component={Home}/>
       <Route path="/details/:id" component={Details}/>

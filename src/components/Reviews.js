@@ -17,17 +17,30 @@ const Reviews = (props) => {
     return (
         <>
             <h3>Reviews page</h3>
-            {reviews.map((review) => (
-                <>
-                    <ul key={review._id}>
-                        <li>{review._id}</li>
-                        <li>{review.title}</li>
-                        <li>{review.body}</li>
-                        <li>{review.rating}</li>
-                        <li>{review.product.display}</li>
-                    </ul><hr />
-                </>
-            ))}
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Body</th>
+                        <th>Rating</th>
+                        <th>Product</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {reviews.map((review) => (
+                        <>
+                            <tr key={review._id}>
+                                <td>{review._id}</td>
+                                <td>{review.title}</td>
+                                <td>{review.body}</td>
+                                <td>{review.rating}</td>
+                                <td>{review.product.display}</td>
+                            </tr>
+                        </>
+                    ))}
+                </tbody>
+            </table>
         </>
     );
 };

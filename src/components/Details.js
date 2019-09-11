@@ -11,7 +11,7 @@ const Details = (props) => {
     //Cart Reference: https://www.youtube.com/watch?v=hhAT0CJDWqM
     const [cart, setCart] = useContext(CartContext);
     //Items to be added
-    const [itemToBeAdded, setItemsToBeAdded] = useState("");
+    const [itemToBeAdded, setItemsToBeAdded] = useState(1);
 
     // componentDidMount() without hook
     useEffect(() => {
@@ -44,7 +44,7 @@ const Details = (props) => {
             <p>{product.description}</p>
             <p>Price: {cart.length * product.price}</p>
             <p>Stock: {product.stock_amount}</p>
-            <input defaultValue="0" min={0} max={product.stock_amount} onChange={e => setItemsToBeAdded(e.target.value)} type="number" />
+            <input value={itemToBeAdded} min={1} max={product.stock_amount} onChange={e => setItemsToBeAdded(e.target.value)} type="number" />
             <button onClick={addToCart}>Add To Cart</button><hr/>
             <p><button><Link to="/">Back to list</Link></button></p><hr/>
             <Reviews id={id} />
