@@ -6,6 +6,8 @@ import Details from './components/Details';
 import Cart from './components/Cart';
 import { CartProvider } from './components/CartContext';
 import Reviews from './components/Reviews';
+import Checkout from './components/Checkout';
+import Confirm from './components/Confirm';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
       <Route path="/details/:id" component={Details}/>
       <Route path="/cart" component={Cart}/>
       <Route path="/reviews" component={Reviews}/>
+      <Route path="/checkout" component={Checkout}/>
+      <Route path="/confirm" component={Confirm}/>
     </Router>
     </CartProvider>
     </>

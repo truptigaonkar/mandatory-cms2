@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../components/CartContext';
 import { Link } from 'react-router-dom';
+import Checkout from '../components/Checkout';
 
 const Cart = (props) => {
     const [cart, setCart] = useContext(CartContext);
@@ -8,6 +9,10 @@ const Cart = (props) => {
     const sum = Number()
     console.log("sum is: ", sum)
     console.log("component Cart.js:", cart);
+
+    const handleEmptyCart = () =>{
+        setCart([]);
+    }
 
     if (cart.length === 0) {
         return (
@@ -44,7 +49,8 @@ const Cart = (props) => {
                     </tbody>
                 </table>
                 <span><b>Total price</b> : {totalPrice}$</span><hr />
-                <p><button><Link to="/">Continue shopping</Link></button>  <button>Checkout</button></p>
+                <button onClick={handleEmptyCart}>Empty Cart</button><br/>
+                <p><button><Link to="/">Continue shopping</Link></button> <button><Link to="/checkout">Checkout</Link></button></p>
             </>
         );
     };
