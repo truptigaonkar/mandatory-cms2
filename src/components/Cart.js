@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../components/CartContext';
 import { Link } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 const Cart = (props) => {
     const [cart, setCart] = useContext(CartContext);
@@ -23,6 +24,7 @@ const Cart = (props) => {
     } else {
         return (
             <>
+             <Navbar />
                 <span>Cart Items: {cart.length}</span>
                 <table border="1">
                     <thead>

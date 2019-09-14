@@ -4,7 +4,7 @@ import axios from 'axios';
 import { CartContext } from '../components/CartContext';
 import { Link } from 'react-router-dom';
 import Reviews from './Reviews';
-import { Redirect } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 const Details = (props) => {
     const [product, setProduct] = useState([]);
@@ -51,6 +51,7 @@ const Details = (props) => {
             <Helmet>
                 <title>{product.name}</title>
             </Helmet>
+            <Navbar />
             <h3>{product.name} Details: </h3>
             {/* Show the gallary images */}
             <p>{images}</p>

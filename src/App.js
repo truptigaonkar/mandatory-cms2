@@ -14,9 +14,9 @@ function App() {
     <>
     <CartProvider>
     <Router>
-    <ul>
+    {/* <ul>
       <li><Link to="/">Home</Link></li>
-    </ul>
+    </ul> */}
       <Route exact path="/" component={Home}/>
       <Route path="/details/:id" component={Details}/>
       <Route path="/cart" component={Cart}/>

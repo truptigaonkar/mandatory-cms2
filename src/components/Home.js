@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import Pagination from '../components/Pagination';
 import { CartContext } from '../components/CartContext';
+import Navbar from '../components/Navbar';
 
 const Home = (props) => {
     const [products, setProducts] = useState([]);
@@ -44,7 +45,8 @@ const Home = (props) => {
             <Helmet>
                 <title>Home</title>
             </Helmet>
-            <h4>Product list <span style={{float:"right", fontSize:"15px"}}><Link to="/cart">Shopping Cart({cart.length})</Link></span></h4>
+            <Navbar />
+            <h4>Product list</h4>
             <p><input type="text" placeholder="Search product by name..." onChange={e => setSearch(e.target.value)} value={search} /></p>
             <p><input type="checkbox" onChange={e => setCheckbox(!checkbox)} checked={checkbox} /> Show only products in stock ({products.length})</p>
             {/* {products.map((product) => ( */}

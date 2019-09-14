@@ -2,6 +2,7 @@ import React, {useContext, useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../components/CartContext';
 import axios from 'axios';
+import Navbar from '../components/Navbar';
 
 const Checkout = () => {
     //Cart
@@ -46,6 +47,7 @@ const Checkout = () => {
 
     return (
         <div>
+            <Navbar />
             <h3>Checkout form</h3>
             Name: <input type="text" placeholder="Name..." onChange={e => setNewOrderName(e.target.value)} value={newOrderName} /><br/>
             Address: <textarea name="" id="" cols="30" rows="3" placeholder="Address..." onChange={e => setNewOrderAddress(e.target.value)} value={newOrderAddress}></textarea><br/>
