@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { CartContext } from '../components/CartContext';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
@@ -7,13 +7,14 @@ const Cart = (props) => {
     const [cart, setCart] = useContext(CartContext);
     const totalPrice = cart.reduce((acc, curr) => acc + (Number(curr.price * curr.amount)), 0);
 
-    const handleEmptyCart = () =>{
+    const handleEmptyCart = () => {
         setCart([]);
     }
 
     if (cart.length === 0) {
         return (
             <>
+                <Navbar />
                 <p>Cart is empty</p>
                 <button><Link to="/">Back to list</Link></button>
             </>
@@ -21,8 +22,8 @@ const Cart = (props) => {
     } else {
         return (
             <>
-             <Navbar />
-                <span>Cart Items: {cart.length}</span>
+                <Navbar />
+                <h4>Cart Items list({cart.length})</h4>
                 <table border="1">
                     <thead>
                         <tr>
@@ -46,8 +47,8 @@ const Cart = (props) => {
                         }
                     </tbody>
                 </table>
-                <span><b>Total price</b> : {totalPrice}$</span><hr />
-                <button onClick={handleEmptyCart}>Empty Cart</button><br/>
+                <span><b>Total price</b> : {totalPrice}$</span>
+                <p><button onClick={handleEmptyCart}>Empty Cart</button></p><hr />
                 <p><button><Link to="/">Continue shopping</Link></button> <button><Link to="/checkout">Checkout</Link></button></p>
             </>
         );

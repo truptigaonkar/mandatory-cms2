@@ -1,22 +1,19 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import Pagination from '../components/Pagination';
-import { CartContext } from '../components/CartContext';
 import Navbar from '../components/Navbar';
 
 const Home = (props) => {
     const [products, setProducts] = useState([]);
     //Pagination (Reference: https://www.youtube.com/watch?v=IYCa1F-OWmk)
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostsPerPage] = useState(3);
+    const [postsPerPage] = useState(3);
     //Search (Reference: https://discourse.getcockpit.com/t/search-itens-by-term/70/3)
     const [search, setSearch] = useState("");
     //Checkbox
     const [checkbox, setCheckbox] = useState(false);
-    //Cart
-    const [cart, setCart] = useContext(CartContext);
 
     // componentDidMount() without hook
     //console.log(checkbox);

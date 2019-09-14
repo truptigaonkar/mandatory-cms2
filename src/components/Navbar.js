@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     //Cart
-    const [cart, setCart] = useContext(CartContext);
+    const [cart] = useContext(CartContext);
     return (
         <>
         <div><Link to="/"><button>Home</button></Link>

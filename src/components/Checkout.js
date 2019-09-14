@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { CartContext } from '../components/CartContext';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
@@ -27,7 +26,7 @@ const Checkout = (props) => {
         const totalPrice = cart.reduce((acc, curr) => acc + (Number(curr.price * curr.amount)), 0);
         setNewOrderTotalPrice(totalPrice)
 
-    }, [])
+    }, [cart])
 
     //Checkout button function to add order in cockpit
     const handleCheckout = (e) => {

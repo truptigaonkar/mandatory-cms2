@@ -52,14 +52,14 @@ const Reviews = (props) => {
     return (
         <>
             <div>
-                <h3>Create Reviews</h3>
+                <h3>Reviews</h3>
                 <p style={{ color: 'red' }}>{errorMessage}</p>
                 Title: <input type="text" placeholder="Title" onChange={e => setNewReviewsTitle(e.target.value)} value={newReviewsTitle} />
                 Body: <input type="text" placeholder="Body" onChange={e => setNewReviewsBody(e.target.value)} value={newReviewsbody} />
                 Rating: <input type="range" step="1" min="0" max="5" onChange={e => setNewReviewsRating(e.target.value)} value={newReviewsRating} />
                 <button onClick={handleCreateReview}>Submit</button>
             </div><hr/>
-            <h3>Reviews List</h3>
+            <h4>Reviews List({reviews.length})</h4>
             <p style={{color:'green'}}>{successMessage}</p>
             <table border="1">
                 <thead>
