@@ -4,6 +4,7 @@ import axios from 'axios';
 import { CartContext } from '../components/CartContext';
 import { Link } from 'react-router-dom';
 import Reviews from './Reviews';
+import { Redirect } from 'react-router-dom';
 
 const Details = (props) => {
     const [product, setProduct] = useState([]);
@@ -32,7 +33,8 @@ const Details = (props) => {
             "amount": itemToBeAdded
         };
         setCart(currentState => [...currentState, cartItem]);
-        window.history.back();
+        //window.history.back(); //Redirecting to previous page
+        props.history.push("/cart"); //Redirecting to cart
     }
     // Show the gallary images
     let images = []
@@ -41,6 +43,7 @@ const Details = (props) => {
         return <img src={"http://192.168.99.102:8085/" + image.path } width="200px" height="200px" />;
       });
     }
+
     return (
         <div>
             <Helmet>

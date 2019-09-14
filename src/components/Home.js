@@ -18,7 +18,7 @@ const Home = (props) => {
     const [cart, setCart] = useContext(CartContext);
 
     // componentDidMount() without hook
-    console.log(checkbox);
+    //console.log(checkbox);
     useEffect(() => {
         Axios.get(`http://192.168.99.102:8085/api/collections/get/products?filter[name][$regex]=${search}${checkbox ?"&filter[stock_amount]=true" : "" }`)
             .then(response => {

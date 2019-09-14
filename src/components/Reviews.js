@@ -4,11 +4,13 @@ import axios from 'axios';
 const Reviews = (props) => {
     const id = props.id;
     const [reviews, setReviews] = useState([]);
+    //Reveiws inputs
     const [newReviewsTitle, setNewReviewsTitle] = useState("");
     const [newReviewsbody, setNewReviewsBody] = useState("");
     const [newReviewsRating, setNewReviewsRating] = useState("");
 
     // componentDidMount() without hook
+    //LIST: Listing reviews
     useEffect(() => {
         axios.get(`http://192.168.99.102:8085/api/collections/get/reviews/Case?&filter[product._id]=${id}`)
             .then(response => {
@@ -17,9 +19,9 @@ const Reviews = (props) => {
             })
     }, [id])
 
+    //CREATE reviews function
     const handleCreateReview = (e) => {
         e.preventDefault();
-
         axios.post(`http://192.168.99.102:8085/api/collections/save/reviews`, {
             data: {
                 title: newReviewsTitle,

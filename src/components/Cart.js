@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../components/CartContext';
 import { Link } from 'react-router-dom';
-import Checkout from '../components/Checkout';
 
 const Cart = (props) => {
     const [cart, setCart] = useContext(CartContext);
