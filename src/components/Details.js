@@ -13,6 +13,8 @@ const Details = (props) => {
     const [cart, setCart] = useContext(CartContext);
     //Items to be added
     const [itemToBeAdded, setItemsToBeAdded] = useState(1);
+    //Disable addToCart button with stock_amount = 0
+    const addToCartBtnEnabled = product.stock_amount > 0;
 
     // componentDidMount() without hook
     useEffect(() => {
@@ -56,7 +58,7 @@ const Details = (props) => {
             <p>Price: {cart.length * product.price}</p>
             <p>Stock: {product.stock_amount}</p>
             <input value={itemToBeAdded} min={1} max={product.stock_amount} onChange={e => setItemsToBeAdded(e.target.value)} type="number" />
-            <button onClick={addToCart}>Add To Cart</button><hr/>
+            <button disabled={!addToCartBtnEnabled} onClick={addToCart}>Add To Cart</button><hr/>
             <p><button><Link to="/">Back to list</Link></button></p><hr/>
             <Reviews id={id} />
         </div>
