@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { CartContext } from '../components/CartContext';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
@@ -6,9 +6,6 @@ import Navbar from '../components/Navbar';
 const Cart = (props) => {
     const [cart, setCart] = useContext(CartContext);
     const totalPrice = cart.reduce((acc, curr) => acc + (Number(curr.price * curr.amount)), 0);
-    const sum = Number()
-    console.log("sum is: ", sum)
-    console.log("component Cart.js:", cart);
 
     const handleEmptyCart = () =>{
         setCart([]);

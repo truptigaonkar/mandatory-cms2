@@ -24,26 +24,26 @@ const Details = (props) => {
         })
     }, [id])
 
-     //Cart: function addToCart Reference: https://www.youtube.com/watch?v=hhAT0CJDWqM
-     const addToCart = () => {
-        console.log("Button Add to cart clicked");
-        const cartItem = { 
+    //Cart: function addToCart Reference: https://www.youtube.com/watch?v=hhAT0CJDWqM
+    const addToCart = () => {
+        const cartItem = {
             "id": product._id,
             "name": product.name,
             "price": product.price,
             // "amount": product.stock_amount
             "amount": itemToBeAdded
         };
+
         setCart(currentState => [...currentState, cartItem]);
         //window.history.back(); //Redirecting to previous page
         props.history.push("/cart"); //Redirecting to cart
     }
     // Show the gallary images
     let images = []
-    if(product.images) {
-      images = product.images.map(image => {
-        return <img src={"http://192.168.99.102:8085/" + image.path } width="200px" height="200px" />;
-      });
+    if (product.images) {
+        images = product.images.map(image => {
+            return <img src={"http://192.168.99.102:8085/" + image.path} width="200px" height="200px" />;
+        });
     }
 
     return (
@@ -56,11 +56,11 @@ const Details = (props) => {
             {/* Show the gallary images */}
             <p>{images}</p>
             <p>{product.description}</p>
-            <p>Price: {cart.length * product.price}</p>
+            <p>Price: {product.price}$</p>
             <p>Stock: {product.stock_amount}</p>
             <input value={itemToBeAdded} min={1} max={product.stock_amount} onChange={e => setItemsToBeAdded(e.target.value)} type="number" />
-            <button disabled={!addToCartBtnEnabled} onClick={addToCart}>Add To Cart</button><hr/>
-            <p><button><Link to="/">Back to list</Link></button></p><hr/>
+            <button disabled={!addToCartBtnEnabled} onClick={addToCart}>Add To Cart</button><hr />
+            <p><button><Link to="/">Back to list</Link></button></p><hr />
             <Reviews id={id} />
         </div>
     );
