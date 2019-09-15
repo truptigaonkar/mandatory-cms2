@@ -3,7 +3,9 @@ import Axios from 'axios';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import Pagination from '../components/Pagination';
-import Navbar from '../components/Navbar';
+import Navbar from './NavbarComp';
+import logo from '../logo.png';
+import { Badge, Row, Col, InputGroup, InputGroupAddon, Input, Button } from 'reactstrap';
 
 const Home = (props) => {
     const [products, setProducts] = useState([]);
@@ -18,7 +20,7 @@ const Home = (props) => {
     // componentDidMount() without hook
     //console.log(checkbox);
     useEffect(() => {
-        Axios.get(`http://192.168.99.102:8085/api/collections/get/products?filter[name][$regex]=${search}${checkbox ?"&filter[stock_amount]=true" : "" }`)
+        Axios.get(`http://192.168.99.102:8085/api/collections/get/products?filter[name][$regex]=${search}${checkbox ? "&filter[stock_amount]=true" : ""}`)
             .then(response => {
                 console.log(response.data.entries);
                 setProducts(response.data.entries);
@@ -38,30 +40,53 @@ const Home = (props) => {
     }
 
     return (
-        <div>
+        <div style={{ textAlign: "center" }}>
             <Helmet>
                 <title>Home</title>
             </Helmet>
-            <Navbar />
-            <h4>Product list</h4>
-            <p><input type="text" placeholder="Search product by name..." onChange={e => setSearch(e.target.value)} value={search} /></p>
-            <p><input type="checkbox" onChange={e => setCheckbox(!checkbox)} checked={checkbox} /> Show only products in stock ({products.length})</p>
+            <div class="topHeader">
+                    <div class="shipping-text" style={{float:"center"}} >(+91) 000-1233 <span class="shipping-detail">24/7 Online Support</span></div>
+                
+            </div>
+            <div class="container">
+                <div className="middleHeader">
+                    <div><input type="checkbox" onChange={e => setCheckbox(!checkbox)} checked={checkbox} /> In stock <Badge color="secondary">{products.length}</Badge></div>
+                    <div><img src={logo} alt="" /></div>
+                    <div>
+                        <InputGroup>
+                            <Input placeholder="Search product by name..." onChange={e => setSearch(e.target.value)} value={search} /><InputGroupAddon addonType="prepend"><Button><i className="fa fa-search"></i></Button></InputGroupAddon>
+                        </InputGroup>
+                    </div>
+                </div>
+            </div>
+
+            <Navbar /><br />
+            <h4>FEATURED PRODUCTS <Badge color="secondary">{products.length}</Badge></h4><hr />
             {/* {products.map((product) => ( */}
             {currentPosts.map((product) => (
                 <div className="parent" key={product._id}>
-                    <div className="child">
-                        <h6><Link to={`/details/${product._id}`}>{product.name}</Link></h6>
-                        <p>{<img src={"http://192.168.99.102:8085/" + product.images[0].path} alt="image" width="200px" />}</p>
-                        <p>{product.price}$</p>
-                        <p>{product.stock_amount} in stock</p>
-                    </div>
+                    <Row>
+                        <div className="container">
+                            <Col>
+                                <div className="child">
+                                    <p><Link to={`/details/${product._id}`}>{<img src={"http://192.168.99.102:8085/" + product.images[0].path} alt="image" width="250px" height="250px" />}</Link></p>
+                                </div>
+                                <h6><Link to={`/details/${product._id}`}>{product.name}</Link></h6>
+                                <b>{product.price} SEK</b>
+                                {/* <p>{product.stock_amount} in stock</p> */}
+                            </Col>
+                        </div>
+                    </Row>
+
                 </div>
-            ))}
-            <Pagination
-                postsPerPage={postsPerPage}
-                totalPosts={products.length}
-                paginate={paginate}
-            />
+            ))} <hr />
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <Pagination
+                    postsPerPage={postsPerPage}
+                    totalPosts={products.length}
+                    paginate={paginate}
+                />
+            </div><hr />
         </div>
     );
 };

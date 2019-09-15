@@ -1,9 +1,60 @@
+*{
+  /* background: black;
+  color:white */
+}
+
+.topHeader{
+  border-bottom: 1px black solid;
+  font-size: 12px;
+  margin-bottom: 50px;
+}
+
+.middleHeader{
+  height:100px;
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .parent {
   display: inline-flex;
-  text-align: center
+  text-align: center;
 }
 
 .child {
-  border: solid 1px black;
+ background: lightgray;
+  border-radius: 3px;
   margin: 5px;
+  width: 300px;
+  height: 300px;
+  
+}
+img:hover {
+  transform: scale(1.1);
+}
+
+/* Shopping cart, Reference: https://codepen.io/chcculle/pen/qPrWBK*/
+.fa-stack[data-count]:after{
+  position:absolute;
+  right:0%;
+  top:0%;
+  content: attr(data-count);
+  font-size:40%;
+  padding:.6em;
+  border-radius:999px;
+  line-height:.75em;
+  color: green;
+  color:$shopping-cart-red;
+  text-align:center;
+  min-width:2em;
+  font-weight:bold;
+  background: white;
+  border-style:solid;
+}
+.fa-circle {
+  color:green;
+}
+
+.red-cart {
+	color:green; background:white;
 }

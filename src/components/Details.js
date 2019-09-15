@@ -4,7 +4,7 @@ import axios from 'axios';
 import { CartContext } from '../components/CartContext';
 import { Link } from 'react-router-dom';
 import Reviews from './Reviews';
-import Navbar from '../components/Navbar';
+import Navbar from './NavbarComp';
 
 const Details = (props) => {
     const [product, setProduct] = useState([]);

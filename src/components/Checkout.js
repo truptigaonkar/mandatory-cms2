@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { CartContext } from '../components/CartContext';
 import axios from 'axios';
-import Navbar from '../components/Navbar';
+import Navbar from './NavbarComp';
 
 const Checkout = (props) => {
     //Cart
