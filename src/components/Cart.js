@@ -8,9 +8,15 @@ const Cart = (props) => {
     const [cart, setCart] = useContext(CartContext);
     const totalPrice = cart.reduce((acc, curr) => acc + (Number(curr.price * curr.amount)), 0);
 
+    //Empty cart button function
     const handleEmptyCart = () => {
         window.localStorage.removeItem('shopping-cart');
         setCart([]);
+    }
+
+    // Go back to previous page
+    const goBack = () => {
+        window.history.back();
     }
 
     if (cart.length === 0) {
@@ -31,11 +37,11 @@ const Cart = (props) => {
             <>
                 <Navbar />
                 <div className="container"><br />
-                    {/* <Breadcrumb tag="nav" listTag="div">
-                    <BreadcrumbItem tag="a"><Link to="/">Home</Link></BreadcrumbItem>
-                    <BreadcrumbItem tag="a"><Link to="">Details</Link></BreadcrumbItem>
-                    <BreadcrumbItem active tag="span">Cart</BreadcrumbItem>
-                </Breadcrumb> */}
+                    <Breadcrumb tag="nav" listTag="div">
+                        <BreadcrumbItem tag="a"><Link to="/">Home</Link></BreadcrumbItem>
+                        <BreadcrumbItem tag="a"><Link onClick={goBack}>Details</Link></BreadcrumbItem>
+                        <BreadcrumbItem active tag="span">Cart</BreadcrumbItem>
+                    </Breadcrumb>
                     <Row>
                         <Col sm="12" md={{ size: 10, offset: 1 }}>
                             <Card style={{ margin: '20px', textAlign: 'center' }} >

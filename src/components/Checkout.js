@@ -3,7 +3,7 @@ import { CartContext } from '../components/CartContext';
 import axios from 'axios';
 import Navbar from './NavbarComp';
 import { Link } from 'react-router-dom';
-import { Button, CardHeader, CardBody, Card, CardText, Input, Row, Col } from 'reactstrap';
+import { Button, CardHeader, CardBody, Card, CardText, Input, Row, Col, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 const Checkout = (props) => {
     //Cart
@@ -43,13 +43,15 @@ const Checkout = (props) => {
                     address: newOrderAddress,
                     total_price: newOrderTotalPrice,
                     product_list: cart.value,
+                    //product_list: cart.value.map(x => ({ value: x })),
                 }
             })
                 .then(response => {
-                    //console.log("Create order entry:", response.data);
+                    console.log("Create order entry:", response.data);
                     setOrders([...orders, response.data]);
                     props.history.push("/confirm"); //Redirecting to cart
                 })
+            window.localStorage.removeItem('shopping-cart');
             setCart([]); // After checkout, cart becomes empty
             // inputs becomes empty
             setNewOrderName([]);
@@ -61,6 +63,12 @@ const Checkout = (props) => {
         <>
             <Navbar />
             <div className="container"><br />
+            <Breadcrumb tag="nav" listTag="div">
+                        <BreadcrumbItem tag="a"><Link to="/">Home</Link></BreadcrumbItem>
+                        <BreadcrumbItem tag="a"><Link to="">Details</Link></BreadcrumbItem>
+                        <BreadcrumbItem tag="a"><Link to="/cart">Cart</Link></BreadcrumbItem>
+                        <BreadcrumbItem active tag="span">Checkout</BreadcrumbItem>
+                    </Breadcrumb>
                 <Row>
                     <Col sm="12" md={{ size: 10, offset: 1 }}>
                         <Card style={{ margin: '20px', textAlign: 'center' }} >
@@ -80,6 +88,7 @@ const Checkout = (props) => {
             </div>
         </>
     );
+    
 };
 
 export default Checkout;

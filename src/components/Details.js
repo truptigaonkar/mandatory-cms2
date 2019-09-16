@@ -28,7 +28,7 @@ const Details = (props) => {
     //Cart: function addToCart Reference: https://www.youtube.com/watch?v=hhAT0CJDWqM
     const addToCart = () => {
         const cartItem = {
-            "id": product._id,
+            // "id": product._id,
             "name": product.name,
             "price": product.price,
             // "amount": product.stock_amount
