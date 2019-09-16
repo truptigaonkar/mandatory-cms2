@@ -12,6 +12,7 @@ import Confirm from './components/Confirm';
 function App() {
   return (
     <>
+    
     <CartProvider>
     <Router>
     {/* <ul>
@@ -25,6 +26,7 @@ function App() {
       <Route path="/confirm" component={Confirm}/>
     </Router>
     </CartProvider>
+ 
     </>
   );
 }

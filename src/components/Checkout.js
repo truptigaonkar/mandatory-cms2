@@ -2,6 +2,8 @@ import React, { useContext, useState, useEffect } from 'react';
 import { CartContext } from '../components/CartContext';
 import axios from 'axios';
 import Navbar from './NavbarComp';
+import { Link } from 'react-router-dom';
+import { Button, CardHeader, CardBody, Card, CardText, Input, Row, Col } from 'reactstrap';
 
 const Checkout = (props) => {
     //Cart
@@ -43,11 +45,11 @@ const Checkout = (props) => {
                     product_list: cart.value,
                 }
             })
-            .then(response => {
-                //console.log("Create order entry:", response.data);
-                setOrders([...orders, response.data]);
-                props.history.push("/confirm"); //Redirecting to cart
-            })
+                .then(response => {
+                    //console.log("Create order entry:", response.data);
+                    setOrders([...orders, response.data]);
+                    props.history.push("/confirm"); //Redirecting to cart
+                })
             setCart([]); // After checkout, cart becomes empty
             // inputs becomes empty
             setNewOrderName([]);
@@ -56,14 +58,27 @@ const Checkout = (props) => {
     }
 
     return (
-        <div>
+        <>
             <Navbar />
-            <h3>Checkout form</h3>
-            <p style={{ color: 'red' }}>{errorMessage}</p>
-            Name: <input type="text" placeholder="Name..." onChange={e => setNewOrderName(e.target.value)} value={newOrderName} required /><br />
-            Address: <textarea name="" id="" cols="30" rows="3" placeholder="Address..." onChange={e => setNewOrderAddress(e.target.value)} value={newOrderAddress} required></textarea><br />
-            <button onClick={handleCheckout}>Submit</button>
-        </div>
+            <div className="container"><br />
+                <Row>
+                    <Col sm="12" md={{ size: 10, offset: 1 }}>
+                        <Card style={{ margin: '20px', textAlign: 'center' }} >
+                            <CardHeader><h4>Checkout form</h4></CardHeader>
+                            <CardBody>
+                                <CardText>
+                                    <p style={{ color: 'red' }}>{errorMessage}</p>
+                                    <Input type="text" placeholder="Name..." onChange={e => setNewOrderName(e.target.value)} value={newOrderName} required /><br />
+                                    <Input type="textarea" placeholder="Address..." onChange={e => setNewOrderAddress(e.target.value)} value={newOrderAddress} required /><br />
+                                    <Button color="info" onClick={handleCheckout}>SEND</Button>
+                                </CardText>
+                            </CardBody>
+                        </Card>
+                    </Col>
+                </Row><hr />
+                <p style={{float:'right'}}><Link to="/"><Button color="primary">Continue shopping</Button></Link></p>
+            </div>
+        </>
     );
 };
 

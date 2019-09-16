@@ -25,7 +25,7 @@
  background: lightgray;
   border-radius: 3px;
   margin: 5px;
-  width: 300px;
+  width: 360px;
   height: 300px;
   
 }
@@ -44,12 +44,11 @@ img:hover {
   border-radius:999px;
   line-height:.75em;
   color: green;
-  color:$shopping-cart-red;
   text-align:center;
   min-width:2em;
   font-weight:bold;
   background: white;
-  border-style:solid;
+  border-style: solid;
 }
 .fa-circle {
   color:green;
@@ -57,4 +56,17 @@ img:hover {
 
 .red-cart {
 	color:green; background:white;
+}
+
+.addToBtn{
+  display: inline-flex;
+  margin: 1px
+}
+
+.emptyPage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center
 }

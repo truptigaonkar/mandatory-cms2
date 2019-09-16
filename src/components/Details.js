@@ -5,6 +5,7 @@ import { CartContext } from '../components/CartContext';
 import { Link } from 'react-router-dom';
 import Reviews from './Reviews';
 import Navbar from './NavbarComp';
+import { Row, Col, Badge, Input, Button, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 const Details = (props) => {
     const [product, setProduct] = useState([]);
@@ -42,7 +43,7 @@ const Details = (props) => {
     let images = []
     if (product.images) {
         images = product.images.map(image => {
-            return <img src={"http://192.168.99.102:8085/" + image.path} width="200px" height="200px" />;
+            return <img src={"http://192.168.99.102:8085/" + image.path} width="400px" height="400px" />;
         });
     }
 
@@ -52,16 +53,25 @@ const Details = (props) => {
                 <title>{product.name}</title>
             </Helmet>
             <Navbar />
-            <h3>{product.name} Details: </h3>
-            {/* Show the gallary images */}
-            <p>{images}</p>
-            <p>{product.description}</p>
-            <p>Price: {product.price}$</p>
-            <p>Stock: {product.stock_amount}</p>
-            <input value={itemToBeAdded} min={1} max={product.stock_amount} onChange={e => setItemsToBeAdded(e.target.value)} type="number" />
-            <button disabled={!addToCartBtnEnabled} onClick={addToCart}>Add To Cart</button><hr />
-            <p><button><Link to="/">Back to list</Link></button></p><hr />
-            <Reviews id={id} />
+            <div className="container"><br />
+                <Breadcrumb tag="nav" listTag="div">
+                    <BreadcrumbItem tag="a"><Link to="/">Home</Link></BreadcrumbItem>
+                    <BreadcrumbItem active tag="span">{product.name} Details</BreadcrumbItem>
+                </Breadcrumb>
+                <Row>
+                    <Col xs="4"><br />
+                        {/* Show the ga<br/>llary images */}
+                        <p>{images}</p></Col>
+                    <Col xs="8"><br /><h5>{product.name}</h5><hr />
+                        <b>Price: {product.price} SEK</b>
+                        <p>Availability: In Stock <Badge color="secondary">{product.stock_amount}</Badge></p><hr />
+                        <p>{product.description}</p><hr />
+                        <div className="addToBtn"><Input value={itemToBeAdded} min={1} max={product.stock_amount} onChange={e => setItemsToBeAdded(e.target.value)} type="number" style={{ width: "75px" }} />
+                            <Button color="info" disabled={!addToCartBtnEnabled} onClick={addToCart}>Add To Cart</Button></div><hr />
+
+                        <Reviews id={id} /></Col>
+                </Row>
+            </div>
         </div>
     );
 };

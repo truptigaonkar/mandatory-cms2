@@ -63,23 +63,24 @@ const Home = (props) => {
             <Navbar /><br />
             <h4>FEATURED PRODUCTS <Badge color="secondary">{products.length}</Badge></h4><hr />
             {/* {products.map((product) => ( */}
+          
             {currentPosts.map((product) => (
                 <div className="parent" key={product._id}>
                     <Row>
-                        <div className="container">
+                       
                             <Col>
                                 <div className="child">
-                                    <p><Link to={`/details/${product._id}`}>{<img src={"http://192.168.99.102:8085/" + product.images[0].path} alt="image" width="250px" height="250px" />}</Link></p>
+                                    <p><Link to={`/details/${product._id}`}>{<img src={"http://192.168.99.102:8085/" + product.images[0].path} alt="image" width="320px" height="250px" />}</Link></p>
                                 </div>
                                 <h6><Link to={`/details/${product._id}`}>{product.name}</Link></h6>
                                 <b>{product.price} SEK</b>
                                 {/* <p>{product.stock_amount} in stock</p> */}
                             </Col>
-                        </div>
                     </Row>
 
                 </div>
-            ))} <hr />
+            ))} 
+           <hr />
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <Pagination
                     postsPerPage={postsPerPage}
