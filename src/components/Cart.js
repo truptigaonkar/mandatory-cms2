@@ -39,7 +39,7 @@ const Cart = (props) => {
                 <div className="container"><br />
                     <Breadcrumb tag="nav" listTag="div">
                         <BreadcrumbItem tag="a"><Link to="/">Home</Link></BreadcrumbItem>
-                        <BreadcrumbItem tag="a"><Link onClick={goBack}>Details</Link></BreadcrumbItem>
+                        <BreadcrumbItem tag="a"><Link onClick={goBack}>Product</Link></BreadcrumbItem>
                         <BreadcrumbItem active tag="span">Cart</BreadcrumbItem>
                     </Breadcrumb>
                     <Row>

@@ -3,7 +3,7 @@ import { CartContext } from '../components/CartContext';
 import axios from 'axios';
 import Navbar from './NavbarComp';
 import { Link } from 'react-router-dom';
-import { Button, CardHeader, CardBody, Card, CardText, Input, Row, Col, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Button, CardHeader, CardBody, Card, CardText, Input, Row, Col, Breadcrumb, BreadcrumbItem, Table } from 'reactstrap';
 
 const Checkout = (props) => {
     //Cart
@@ -42,8 +42,8 @@ const Checkout = (props) => {
                     name: newOrderName,
                     address: newOrderAddress,
                     total_price: newOrderTotalPrice,
-                    product_list: cart.value,
-                    //product_list: cart.value.map(x => ({ value: x })),
+                    //product_list: cart.value, //Without prouduct_list(name,amount,price)
+                    product_list: cart.map(x => ({ value: x })) //Listing prouduct_list(name,amount,price)
                 }
             })
                 .then(response => {
@@ -52,6 +52,7 @@ const Checkout = (props) => {
                     props.history.push("/confirm"); //Redirecting to cart
                 })
             window.localStorage.removeItem('shopping-cart');
+            console.log(cart);
             setCart([]); // After checkout, cart becomes empty
             // inputs becomes empty
             setNewOrderName([]);
@@ -63,14 +64,40 @@ const Checkout = (props) => {
         <>
             <Navbar />
             <div className="container"><br />
-            <Breadcrumb tag="nav" listTag="div">
-                        <BreadcrumbItem tag="a"><Link to="/">Home</Link></BreadcrumbItem>
-                        <BreadcrumbItem tag="a"><Link to="">Details</Link></BreadcrumbItem>
-                        <BreadcrumbItem tag="a"><Link to="/cart">Cart</Link></BreadcrumbItem>
-                        <BreadcrumbItem active tag="span">Checkout</BreadcrumbItem>
-                    </Breadcrumb>
+                <Breadcrumb tag="nav" listTag="div">
+                    <BreadcrumbItem tag="a"><Link to="/">Home</Link></BreadcrumbItem>
+                    <BreadcrumbItem tag="a"><Link to="">Details</Link></BreadcrumbItem>
+                    <BreadcrumbItem tag="a"><Link to="/cart">Cart</Link></BreadcrumbItem>
+                    <BreadcrumbItem active tag="span">Checkout</BreadcrumbItem>
+                </Breadcrumb>
                 <Row>
-                    <Col sm="12" md={{ size: 10, offset: 1 }}>
+                    <Col xs="4">
+                    {/* Product_list */}
+            <h5>Items to be purchase:</h5>
+            <Table size="sm" bordered>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {cart.map((productList) => (
+                        <>
+                            <tr key={productList._id}>
+                                <td>{productList.name}</td>
+                                <td>{productList.amount}</td>
+                                <td>{productList.price}</td>
+                            </tr>
+                        </>
+                    ))}
+                </tbody>
+            </Table></Col>
+                    <Col xs="8">
+
+                    
+            
                         <Card style={{ margin: '20px', textAlign: 'center' }} >
                             <CardHeader><h4>Checkout form</h4></CardHeader>
                             <CardBody>
@@ -84,11 +111,12 @@ const Checkout = (props) => {
                         </Card>
                     </Col>
                 </Row><hr />
-                <p style={{float:'right'}}><Link to="/"><Button color="primary">Continue shopping</Button></Link></p>
+                <p style={{ float: 'right' }}><Link to="/"><Button color="primary">Continue shopping</Button></Link></p>
             </div>
+
         </>
     );
-    
+
 };
 
 export default Checkout;
