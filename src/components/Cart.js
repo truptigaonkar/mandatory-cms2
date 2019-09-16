@@ -9,6 +9,7 @@ const Cart = (props) => {
     const totalPrice = cart.reduce((acc, curr) => acc + (Number(curr.price * curr.amount)), 0);
 
     const handleEmptyCart = () => {
+        window.localStorage.removeItem('shopping-cart');
         setCart([]);
     }
 

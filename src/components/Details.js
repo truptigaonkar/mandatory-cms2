@@ -35,6 +35,24 @@ const Details = (props) => {
             "amount": itemToBeAdded
         };
 
+        
+        //localstorage: If there is no shopping cart in local storage, create one else, add a new object
+        let shoppingCart;
+        let localStorage = window.localStorage.getItem('shopping-cart');
+        if (localStorage === null) {
+            shoppingCart = [];
+        }
+        else {
+            shoppingCart = JSON.parse(localStorage);
+        }
+        //Convert to JSON and save in local storage
+        shoppingCart = [...shoppingCart, cartItem];
+        let jsonString = JSON.stringify(shoppingCart);
+        window.localStorage.setItem('shopping-cart', jsonString);
+        localStorage = window.localStorage.getItem('shopping-cart');
+        console.log('localStorage: ', localStorage);
+
+
         setCart(currentState => [...currentState, cartItem]);
         //window.history.back(); //Redirecting to previous page
         props.history.push("/cart"); //Redirecting to cart
