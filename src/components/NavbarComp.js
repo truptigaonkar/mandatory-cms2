@@ -10,7 +10,7 @@ const NavbarComp = () => {
         <>
             <Navbar color="dark" light expand="md">
                 <div className="container">
-                    <Link to="/"><NavbarBrand style={{ color: 'white' }}>Home</NavbarBrand></Link>
+                    <Link to="/"><NavbarBrand style={{ color: 'white' }}><button class="btn" style={{ color: 'white', fontSize:'30px' }}><i class="fa fa-home"></i></button></NavbarBrand></Link>
                     {/* Shopping cart, reference: https://codepen.io/chcculle/pen/qPrWBK */}
                     <Link to="/cart">
                         <span class="fa-stack fa-2x has-badge" data-count={cart.length} style={{float:"right", fontSize:'25px'}}>

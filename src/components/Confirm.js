@@ -10,7 +10,6 @@ const Confirm = (props) => {
             <div className="container">
                 <Breadcrumb tag="nav" listTag="div">
                     <BreadcrumbItem tag="a"><Link to="/">Home</Link></BreadcrumbItem>
-                    <BreadcrumbItem tag="a"><Link to="">Details</Link></BreadcrumbItem>
                     <BreadcrumbItem tag="a"><Link to="/cart">Cart</Link></BreadcrumbItem>
                     <BreadcrumbItem active tag="span">Confirmation Page</BreadcrumbItem>
                 </Breadcrumb>

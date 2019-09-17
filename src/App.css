@@ -1,6 +1,7 @@
 *{
   /* background: black;
   color:white */
+  font-family: 'Merriweather Sans', sans-serif;
 }
 
 .topHeader{
@@ -22,12 +23,14 @@
 }
 
 .child {
- background: lightgray;
+ /* background: lightgray; */
   border-radius: 3px;
   margin: 5px;
-  width: 360px;
+  width: 270px;
   height: 300px;
-  
+  border: 1px solid;
+  padding: 17px;
+  box-shadow: 3px 3px 3px 3px #888888;
 }
 img:hover {
   transform: scale(1.1);

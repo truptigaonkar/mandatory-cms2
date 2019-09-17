@@ -74,7 +74,7 @@ const Reviews = (props) => {
                             <Input type="text" placeholder="Body...." onChange={e => setNewReviewsBody(e.target.value)} value={newReviewsbody} />
                             {/* <Input type="range" step="1" min="0" max="5" onChange={e => setNewReviewsRating(e.target.value)} value={newReviewsRating} /> */}
 
-                            <Input style={{ width: "100%" }} type="range" name="rating" id="rating" placeholder="Rating" min="0.0" max="5.0" step="1" value={newReviewsRating} onChange={e => setNewReviewsRating(e.target.value)} />
+                            <Input style={{ width: "100%" }} type="range" name="rating" id="rating" placeholder="Rating" min="1" max="5" step="1" value={newReviewsRating} onChange={e => setNewReviewsRating(e.target.value)} />
                             <Badge sm={1} color="success">{newReviewsRating}</Badge>  {/* Showing movie rating */}
 
                             <Button color="info" onClick={handleCreateReview}>SEND</Button>

@@ -11,7 +11,7 @@ const Home = (props) => {
     const [products, setProducts] = useState([]);
     //Pagination (Reference: https://www.youtube.com/watch?v=IYCa1F-OWmk)
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(3);
+    const [postsPerPage] = useState(4);
     //Search (Reference: https://discourse.getcockpit.com/t/search-itens-by-term/70/3)
     const [search, setSearch] = useState("");
     //Checkbox
@@ -46,7 +46,6 @@ const Home = (props) => {
             </Helmet>
             <div class="topHeader">
                     <div class="shipping-text" style={{float:"center"}} >(+91) 000-1233 <span class="shipping-detail">24/7 Online Support</span></div>
-                
             </div>
             <div class="container">
                 <div className="middleHeader">
@@ -70,7 +69,7 @@ const Home = (props) => {
                        
                             <Col>
                                 <div className="child">
-                                    <p><Link to={`/details/${product._id}`}>{<img src={"http://192.168.99.102:8085/" + product.images[0].path} alt="image" width="320px" height="250px" />}</Link></p>
+                                    <p><Link to={`/details/${product._id}`}>{<img src={"http://192.168.99.102:8085/" + product.images[0].path} alt="image" width="240px" height="250px" />}</Link></p>
                                 </div>
                                 <h6><Link to={`/details/${product._id}`}>{product.name}</Link></h6>
                                 <b>{product.price} SEK</b>
