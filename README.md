@@ -69,8 +69,9 @@ This will copy the folder to the current directory.
 * The shopping cart should be implemented using localStorage
 * The checkout page should include a form where the user can input name and address
 * When the user submits the checkout form the shopping cart should be emptied
-* Use Collectionlinks in Cockpit to link reviews to products
-VG grade:
+* Use Collectionlinks in Cockpit to link reviews to products.
+
+#### VG grade:
 * The product pages should include a form where the user can add new reviews. These reviews should include a title, a body and a rating between 1 and 5
 * When the user submits the checkout form a new “order” entry should be added to Cockpit. This entry should include the name and address of the user, the total price and a list of products and their respective quantities.
 
