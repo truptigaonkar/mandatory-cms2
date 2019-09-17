@@ -8,18 +8,17 @@ const Confirm = (props) => {
         <div>
             <Navbar /><br />
             <div className="container">
-                <Breadcrumb tag="nav" listTag="div">
+                {/* <Breadcrumb tag="nav" listTag="div">
                     <BreadcrumbItem tag="a"><Link to="/">Home</Link></BreadcrumbItem>
                     <BreadcrumbItem tag="a"><Link to="/cart">Cart</Link></BreadcrumbItem>
                     <BreadcrumbItem active tag="span">Confirmation Page</BreadcrumbItem>
-                </Breadcrumb>
+                </Breadcrumb> */}
             </div>
-            <div className="emptyPage">
-                <Alert color="success">
-                    <b>YOUR ORDER HAS BEEN RECEIVED.</b>
-                    <p>Thank you for the purchase</p>
-                </Alert>
-                <p><Link to="/"><Button color="primary">Continue shopping</Button></Link></p>
+            <div className="emptyPage" style={{ textAlign: 'center' }}>
+                <i class="fa fa-check-circle" aria-hidden="true" style={{ color: 'green', fontSize: '90px' }}></i>
+                <p style={{ fontSize: '20px' }}>Order Completed Successfully!</p>
+                <p>Thank you for ordering. We received your order and will begin processing it soon.</p>
+                <p><Link to="/"><Button color="primary">BACK TO STORE</Button></Link></p>
             </div>
         </div>
     );

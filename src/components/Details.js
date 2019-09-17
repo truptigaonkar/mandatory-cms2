@@ -57,7 +57,8 @@ const Details = (props) => {
         //window.history.back(); //Redirecting to previous page
         props.history.push("/cart"); //Redirecting to cart
     }
-    // Show the gallary images
+
+    // Show gallary images
     let images = []
     if (product.images) {
         images = product.images.map(image => {
@@ -84,9 +85,9 @@ const Details = (props) => {
                         <b>Price: {product.price} SEK</b>
                         <p>Availability: In Stock <Badge color="secondary">{product.stock_amount}</Badge></p><hr />
                         <p>{product.description}</p><hr />
-                        <div className="addToBtn"><Input value={itemToBeAdded} min={1} max={product.stock_amount} onChange={e => setItemsToBeAdded(e.target.value)} type="number" style={{ width: "75px" }} />
-                            <Button color="info" disabled={!addToCartBtnEnabled} onClick={addToCart}>Add To Cart</Button></div><hr />
-
+                        <div className="addToBtn"><Input value={itemToBeAdded} min={1} max={product.stock_amount} onChange={e => setItemsToBeAdded(e.target.value)} type="number" style={{ width: "70px", marginRight:'10px' }} />
+                            <Button color="success" disabled={!addToCartBtnEnabled} onClick={addToCart}><i class="fa fa-shopping-cart"></i> Add To Cart</Button></div><hr />
+                        {/* Reviews */}
                         <Reviews id={id} /></Col>
                 </Row>
             </div>

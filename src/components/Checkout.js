@@ -104,13 +104,13 @@ const Checkout = (props) => {
                                     <p style={{ color: 'red' }}>{errorMessage}</p>
                                     <Input type="text" placeholder="Name..." onChange={e => setNewOrderName(e.target.value)} value={newOrderName} required /><br />
                                     <Input type="textarea" placeholder="Address..." onChange={e => setNewOrderAddress(e.target.value)} value={newOrderAddress} required /><br />
-                                    <Button color="info" onClick={handleCheckout}>SEND</Button>
+                                    <Button color="info" size="lg" block onClick={handleCheckout}>SEND</Button>
                                 </CardText>
                             </CardBody>
                         </Card>
                     </Col>
                 </Row><hr />
-                <p style={{ float: 'right' }}><Link to="/"><Button color="primary">Continue shopping</Button></Link></p>
+                <p style={{ float: 'left' }}><Link to="/"><Button color="primary" size="sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> CONTINUE SHOPPING</Button></Link></p>
             </div>
 
         </>

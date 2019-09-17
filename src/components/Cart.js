@@ -28,7 +28,7 @@ const Cart = (props) => {
                         <b>Cart is empty</b>
                     </Alert>
 
-                    <p><Link to="/"><Button color="primary">Continue shopping</Button></Link></p>
+                    <p><Link to="/"><Button color="primary" size="sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> CONTINUE SHOPPING</Button></Link></p>
                 </div>
             </>
         )
@@ -81,7 +81,7 @@ const Cart = (props) => {
                             </Card>
                         </Col>
                     </Row><hr />
-                    <p><Link to="/"><Button color="primary">Continue shopping</Button></Link> <Link to="/checkout"><Button color="primary" style={{ float: 'right' }}>Checkout</Button></Link></p>
+                    <p><Link to="/"><Button color="primary" size="sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> CONTINUE SHOPPING</Button></Link> <Link to="/checkout"><Button color="primary" size="sm" style={{ float: 'right' }}>CHECKOUT <i class="fa fa-arrow-right" aria-hidden="true"></i></Button></Link></p>
                 </div>
             </>
         );

@@ -62,13 +62,11 @@ const Home = (props) => {
             <Navbar /><br />
             <h4>FEATURED PRODUCTS <Badge color="secondary">{products.length}</Badge></h4><hr />
             {/* {products.map((product) => ( */}
-          
             {currentPosts.map((product) => (
                 <div className="parent" key={product._id}>
                     <Row>
-                       
                             <Col>
-                                <div className="child">
+                                <div className="child" style={{marginBottom:'12px'}}>
                                     <p><Link to={`/details/${product._id}`}>{<img src={"http://192.168.99.102:8085/" + product.images[0].path} alt="image" width="240px" height="250px" />}</Link></p>
                                 </div>
                                 <h6><Link to={`/details/${product._id}`}>{product.name}</Link></h6>

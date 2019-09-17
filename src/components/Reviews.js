@@ -53,7 +53,7 @@ const Reviews = (props) => {
     return (
         <>
             <Card>
-                <CardHeader style={{ textAlign: 'center' }}><h5>Reviews <Badge color="success">{reviews.length}</Badge></h5></CardHeader>
+                <CardHeader style={{ textAlign: 'center' }}><h5>Reviews <Badge color="secondary">{reviews.length}</Badge></h5></CardHeader>
                 <CardBody>
                     <p style={{ color: 'green' }}>{successMessage}</p>
                     {reviews.map((review) => (
@@ -76,8 +76,7 @@ const Reviews = (props) => {
 
                             <Input style={{ width: "100%" }} type="range" name="rating" id="rating" placeholder="Rating" min="1" max="5" step="1" value={newReviewsRating} onChange={e => setNewReviewsRating(e.target.value)} />
                             <Badge sm={1} color="success">{newReviewsRating}</Badge>  {/* Showing movie rating */}
-
-                            <Button color="info" onClick={handleCreateReview}>SEND</Button>
+                            <Button color="info" size="lg" block onClick={handleCreateReview}>SEND</Button>
                         </CardText>
                     </CardBody>
                 </Card>
