@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/mandatory-cms2/static/css/main.29eb0fe4.chunk.css",
-    "main.js": "/mandatory-cms2/static/js/main.d632cb94.chunk.js",
-    "main.js.map": "/mandatory-cms2/static/js/main.d632cb94.chunk.js.map",
+    "main.js": "/mandatory-cms2/static/js/main.d783f00e.chunk.js",
+    "main.js.map": "/mandatory-cms2/static/js/main.d783f00e.chunk.js.map",
     "runtime~main.js": "/mandatory-cms2/static/js/runtime~main.f0877a65.js",
     "runtime~main.js.map": "/mandatory-cms2/static/js/runtime~main.f0877a65.js.map",
     "static/css/2.266e55a5.chunk.css": "/mandatory-cms2/static/css/2.266e55a5.chunk.css",
     "static/js/2.bd810a34.chunk.js": "/mandatory-cms2/static/js/2.bd810a34.chunk.js",
     "static/js/2.bd810a34.chunk.js.map": "/mandatory-cms2/static/js/2.bd810a34.chunk.js.map",
     "index.html": "/mandatory-cms2/index.html",
-    "precache-manifest.12bdf3e184796332bbc989ebf08d8140.js": "/mandatory-cms2/precache-manifest.12bdf3e184796332bbc989ebf08d8140.js",
+    "precache-manifest.ab36a8c4f9a07f6578f26e6ad842b268.js": "/mandatory-cms2/precache-manifest.ab36a8c4f9a07f6578f26e6ad842b268.js",
     "service-worker.js": "/mandatory-cms2/service-worker.js",
     "static/css/2.266e55a5.chunk.css.map": "/mandatory-cms2/static/css/2.266e55a5.chunk.css.map",
     "static/css/main.29eb0fe4.chunk.css.map": "/mandatory-cms2/static/css/main.29eb0fe4.chunk.css.map"
