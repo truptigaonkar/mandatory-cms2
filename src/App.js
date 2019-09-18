@@ -14,7 +14,7 @@ function App() {
     <>
     
     <CartProvider>
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
     {/* <ul>
       <li><Link to="/">Home</Link></li>
     </ul> */}
