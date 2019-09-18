@@ -16,7 +16,7 @@ const Reviews = (props) => {
     // componentDidMount() without hook
     //LIST: Listing reviews
     useEffect(() => {
-        axios.get(`http://192.168.99.102:8085/api/collections/get/reviews/Case?&filter[product._id]=${id}`)
+        axios.get(`https://mandatory-cms2-bdb280.devspace.host/api/collections/get/reviews/Case?&filter[product._id]=${id}`)
             .then(response => {
                 //console.log("List Reviews entry:", response.data.entries);
                 setReviews(response.data.entries);
@@ -30,7 +30,7 @@ const Reviews = (props) => {
             setErrorMessage("You must fill all the details...");
             setTimeout(() => { setErrorMessage('') }, 2000); //above message will disappear after 2000sec.
         } else {
-            axios.post(`http://192.168.99.102:8085/api/collections/save/reviews`, {
+            axios.post(`https://mandatory-cms2-bdb280.devspace.host/api/collections/save/reviews`, {
                 data: {
                     title: newReviewsTitle,
                     body: newReviewsbody,

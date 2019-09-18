@@ -19,7 +19,7 @@ const Checkout = (props) => {
     // componentDidMount() without hook
     useEffect(() => {
         //Checking order list
-        axios.get(`http://192.168.99.102:8085/api/collections/get/order`).then(response => {
+        axios.get(`https://mandatory-cms2-bdb280.devspace.host/api/collections/get/order`).then(response => {
             console.log(response.data.entries);
             setOrders(response.data.entries);
         })
@@ -37,7 +37,7 @@ const Checkout = (props) => {
             setErrorMessage("You must fill all the details...");
             setTimeout(() => { setErrorMessage('') }, 2000); //above message will disappear after 2000sec.
         } else {
-            axios.post(`http://192.168.99.102:8085/api/collections/save/order/`, {
+            axios.post(`https://mandatory-cms2-bdb280.devspace.host/api/collections/save/order/`, {
                 data: {
                     name: newOrderName,
                     address: newOrderAddress,

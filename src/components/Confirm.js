@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './NavbarComp';
-import { Button, Alert, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Button } from 'reactstrap';
 
 const Confirm = (props) => {
     return (

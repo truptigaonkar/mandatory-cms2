@@ -20,7 +20,7 @@ const Home = (props) => {
     // componentDidMount() without hook
     //console.log(checkbox);
     useEffect(() => {
-        Axios.get(`http://192.168.99.102:8085/api/collections/get/products?filter[name][$regex]=${search}${checkbox ? "&filter[stock_amount]=true" : ""}`)
+        Axios.get(`https://mandatory-cms2-bdb280.devspace.host/api/collections/get/products?filter[name][$regex]=${search}${checkbox ? "&filter[stock_amount]=true" : ""}`)
             .then(response => {
                 console.log(response.data.entries);
                 setProducts(response.data.entries);
@@ -67,7 +67,7 @@ const Home = (props) => {
                     <Row>
                             <Col>
                                 <div className="child" style={{marginBottom:'12px'}}>
-                                    <p><Link to={`/details/${product._id}`}>{<img src={"http://192.168.99.102:8085/" + product.images[0].path} alt="image" width="240px" height="250px" />}</Link></p>
+                                    <p><Link to={`/details/${product._id}`}>{<img src={"https://mandatory-cms2-bdb280.devspace.host/" + product.images[0].path} alt="image" width="240px" height="250px" />}</Link></p>
                                 </div>
                                 <h6><Link to={`/details/${product._id}`}>{product.name}</Link></h6>
                                 <b>{product.price} SEK</b>

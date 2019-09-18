@@ -19,7 +19,7 @@ const Details = (props) => {
 
     // componentDidMount() without hook
     useEffect(() => {
-        axios.get(`http://192.168.99.102:8085/api/collections/get/products/Case?&filter[_id]=${id}`).then(response => {
+        axios.get(`https://mandatory-cms2-bdb280.devspace.host/api/collections/get/products/Case?&filter[_id]=${id}`).then(response => {
             console.log(response.data.entries);
             setProduct(response.data.entries[0]);
         })
@@ -62,7 +62,7 @@ const Details = (props) => {
     let images = []
     if (product.images) {
         images = product.images.map(image => {
-            return <img src={"http://192.168.99.102:8085/" + image.path} width="400px" height="400px" />;
+            return <img src={"https://mandatory-cms2-bdb280.devspace.host/" + image.path} width="400px" height="400px" />;
         });
     }
 
