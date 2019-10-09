@@ -1,4 +1,4 @@
-## Ecommerce site using backend Cockpit and REACT 
+## Ecommerce site using backend Cockpit and REACT - [Live Demo]( https://truptigaonkar.github.io/mandatory-cms2/)
 ### Instructions
 
 Create an Ecommerce site using Cockpit as a backend. 
