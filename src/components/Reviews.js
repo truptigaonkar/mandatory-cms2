@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, CardHeader, CardBody, Card, CardText, Input, Badge } from 'reactstrap';
 
+const API_URL = `${process.env.REACT_APP_API_URL}`;
+
 const Reviews = (props) => {
     const id = props.id;
     const [reviews, setReviews] = useState([]);
@@ -16,7 +18,7 @@ const Reviews = (props) => {
     // componentDidMount() without hook
     //LIST: Listing reviews
     useEffect(() => {
-        axios.get(`https://mandatory-cms2-bdb280.devspace.host/api/collections/get/reviews/Case?&filter[product._id]=${id}`)
+        axios.get(`${API_URL}/api/collections/get/reviews/Case?&filter[product._id]=${id}`)
             .then(response => {
                 //console.log("List Reviews entry:", response.data.entries);
                 setReviews(response.data.entries);
@@ -30,7 +32,7 @@ const Reviews = (props) => {
             setErrorMessage("You must fill all the details...");
             setTimeout(() => { setErrorMessage('') }, 2000); //above message will disappear after 2000sec.
         } else {
-            axios.post(`https://mandatory-cms2-bdb280.devspace.host/api/collections/save/reviews`, {
+            axios.post(`${API_URL}/api/collections/save/reviews`, {
                 data: {
                     title: newReviewsTitle,
                     body: newReviewsbody,

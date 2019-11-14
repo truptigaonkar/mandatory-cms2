@@ -7,6 +7,8 @@ import Navbar from './NavbarComp';
 import logo from '../logo.png';
 import { Badge, Row, Col, InputGroup, InputGroupAddon, Input, Button } from 'reactstrap';
 
+const API_URL = `${process.env.REACT_APP_API_URL}`;
+
 const Home = (props) => {
     const [products, setProducts] = useState([]);
     //Pagination (Reference: https://www.youtube.com/watch?v=IYCa1F-OWmk)
@@ -20,7 +22,7 @@ const Home = (props) => {
     // componentDidMount() without hook
     //console.log(checkbox);
     useEffect(() => {
-        Axios.get(`https://mandatory-cms2-bdb280.devspace.host/api/collections/get/products?filter[name][$regex]=${search}${checkbox ? "&filter[stock_amount]=true" : ""}`)
+        Axios.get(`${API_URL}/api/collections/get/products?filter[name][$regex]=${search}${checkbox ? "&filter[stock_amount]=true" : ""}`)
             .then(response => {
                 console.log(response.data.entries);
                 setProducts(response.data.entries);
@@ -67,7 +69,7 @@ const Home = (props) => {
                     <Row>
                             <Col>
                                 <div className="child" style={{marginBottom:'12px'}}>
-                                    <p><Link to={`/details/${product._id}`}>{<img src={"https://mandatory-cms2-bdb280.devspace.host/" + product.images[0].path} alt="image" width="240px" height="250px" />}</Link></p>
+                                    <p><Link to={`/details/${product._id}`}>{<img src={API_URL + product.images[0].path} alt="image" width="240px" height="250px" />}</Link></p>
                                 </div>
                                 <h6><Link to={`/details/${product._id}`}>{product.name}</Link></h6>
                                 <b>{product.price} SEK</b>

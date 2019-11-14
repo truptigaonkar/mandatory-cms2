@@ -7,6 +7,8 @@ import Reviews from './Reviews';
 import Navbar from './NavbarComp';
 import { Row, Col, Badge, Input, Button, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
+const API_URL = `${process.env.REACT_APP_API_URL}`;
+
 const Details = (props) => {
     const [product, setProduct] = useState([]);
     const { id } = props.match.params;
@@ -19,7 +21,7 @@ const Details = (props) => {
 
     // componentDidMount() without hook
     useEffect(() => {
-        axios.get(`https://mandatory-cms2-bdb280.devspace.host/api/collections/get/products/Case?&filter[_id]=${id}`).then(response => {
+        axios.get(`${API_URL}/api/collections/get/products/Case?&filter[_id]=${id}`).then(response => {
             console.log(response.data.entries);
             setProduct(response.data.entries[0]);
         })
@@ -62,7 +64,7 @@ const Details = (props) => {
     let images = []
     if (product.images) {
         images = product.images.map(image => {
-            return <img src={"https://mandatory-cms2-bdb280.devspace.host/" + image.path} width="400px" height="400px" />;
+            return <img src={API_URL + image.path} width="400px" height="400px" />;
         });
     }
 

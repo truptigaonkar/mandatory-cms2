@@ -1,15 +1,17 @@
-version: v1beta3
+version: v1beta4
 images:
   default:
     image: dscr.io/${DEVSPACE_USERNAME}/mandatorycms2
 deployments:
 - name: mandatory-cms2
-  component:
-    containers:
-    - image: dscr.io/${DEVSPACE_USERNAME}/mandatorycms2
-    service:
-      ports:
-      - port: 80
+  helm:
+    componentChart: true
+    values:
+      containers:
+      - image: dscr.io/${DEVSPACE_USERNAME}/mandatorycms2
+      service:
+        ports:
+        - port: 80
 dev:
   ports:
   - imageName: default
@@ -22,3 +24,4 @@ dev:
   - imageName: default
     excludePaths:
     - devspace.yaml/
+    - devspace.yaml
